@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "start:prod": "NODE_ENV=production nodemon index.js"
   },
   "author": "",
@@ -28,5 +29,8 @@
     "nodemon": "^2.0.12",
     "validator": "^13.6.0",
     "xss-clean": "^0.1.1"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   }
 }
