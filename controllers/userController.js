@@ -171,7 +171,6 @@ exports.contact = asyncErr(async (req,res,next) => {
     try{
         await sendEmail({name, email, subject, message})
     }catch(err){
-        console.log(err);
         return next(new appError('error when sending email!, please try again', 500))
     }
 
