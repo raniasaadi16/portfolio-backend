@@ -13,7 +13,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
-
+const compression = require('compression');
 
 // INIT
 const app = express();
@@ -53,6 +53,8 @@ app.use(xss());
 //       'title', 'content', 'category'
 //     ]
 // }));
+
+app.use(compression())
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
