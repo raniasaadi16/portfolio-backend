@@ -48,11 +48,7 @@ app.use(mongoSanitize());
 // Data santization against XSS
 app.use(xss());
 //  prevent paramater pollution
-// app.use(hpp({
-//     whitelist: [
-//       'title', 'content', 'category'
-//     ]
-// }));
+app.use(hpp());
 
 app.use(compression())
 
