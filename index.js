@@ -14,6 +14,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const compression = require('compression');
+const cors = require('cors')
 
 // INIT
 const app = express();
@@ -21,6 +22,8 @@ app.use(express.json());
 dotenv.config({ path: './.env' });
 
 app.enable('trust proxy')
+app.use(cors())
+app.options('*', cors())
 // DB
 const DB = process.env.DATABASE;
 mongoose.connect(DB, {
@@ -53,13 +56,6 @@ app.use(hpp());
 
 app.use(compression())
 
-app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
-});
 
 // ROUTES
 app.use('/api/user', userRoutes);
