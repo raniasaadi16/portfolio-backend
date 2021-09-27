@@ -20,6 +20,7 @@ const app = express();
 app.use(express.json());
 dotenv.config({ path: './.env' });
 
+app.enable('trust proxy')
 // DB
 const DB = process.env.DATABASE;
 mongoose.connect(DB, {
@@ -74,3 +75,10 @@ app.use(errorMiddleware);
 // RUN THE SERVER
 const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`server running on ${port}.....`))
+
+process.on('SIGTERM', () => {
+  console.log('SIGTERM recieved');
+  server.close(() => {
+    console.log('Process terminated')
+  })
+})
