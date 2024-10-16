@@ -72,9 +72,3 @@ app.use(errorMiddleware);
 const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`server running on ${port}.....`))
 
-process.on('SIGTERM', () => {
-  console.log('SIGTERM recieved');
-  server.close(() => {
-    console.log('Process terminated')
-  })
-})
