@@ -19,4 +19,4 @@ const skillSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Skill', skillSchema);
+module.exports = mongoose.model('Skill', skillSchema, 'skills');

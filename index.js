@@ -26,12 +26,7 @@ app.use(cors())
 app.options('*', cors())
 // DB
 const DB = process.env.DATABASE;
-mongoose.connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-  })
+mongoose.connect(DB, {})
   .then(() => console.log('DB connection successful!'));
 
 // Set security HTTP headers
